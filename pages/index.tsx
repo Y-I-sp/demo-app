@@ -1,25 +1,9 @@
-import type { GetServerSideProps,NextPage } from 'next'
+import type { NextPage } from 'next'
 import { useState } from 'react';
 import 'semantic-ui-css/semantic.min.css'
 import {Loader} from 'semantic-ui-react'
-
-interface SerchCatImage{
-  id:string;
-  url:string;
-  width:number;
-  height:number;
-}
-
-interface IndexPageProps{
-initialCatImageUrl:string
-}
-
-const fetchCatImage = async ():Promise<SerchCatImage>=>{
-  const res = await fetch("https://api.thecatapi.com/v1/images/search");
-  const result = await res.json();
-  // console.log(result[0]);
-  return result[0];
-}
+import{ IndexPageProps } from '../components/interface'
+import { fetchCatImage } from '../components/initialCat';
 
 const Home: NextPage<IndexPageProps> = ({initialCatImageUrl}) => {
 
@@ -56,13 +40,6 @@ const Home: NextPage<IndexPageProps> = ({initialCatImageUrl}) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps<IndexPageProps> = async () =>{
-  const catImage = await fetchCatImage();
-  return{
-    props:{
-      initialCatImageUrl:catImage.url,
-    }
-  }
-}
+
 
 export default Home
