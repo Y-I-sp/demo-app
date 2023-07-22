@@ -7,6 +7,7 @@ import { fetchCatImage,getServerSideProps } from '../components/initialCat';
 import { Header } from '../components/header';
 import styles from '../styles/Home.module.css'
 import Button from '@mui/material/Button';
+import Link from 'next/link'
 const Home: NextPage<IndexPageProps> = ({initialCatImageUrl}) => {
 
   const [catImageUrl,setCatImageUrl] = useState(initialCatImageUrl);
@@ -20,21 +21,22 @@ const Home: NextPage<IndexPageProps> = ({initialCatImageUrl}) => {
   }
 
   return (
-    <div className={styles.container}>
-       <Header/>
-      <h1>猫画像アプリ</h1>
+    
+    <div className={styles.main}>
+      <Header/>
+      <Link href='/Munchikin'>Munchikin</Link>
+      <Link href='/Bengal'>Bengal</Link>
+      <Link href="/Toyger">Toyger</Link>
+        
       {isLoading ? (
         <Loader active size="huge" inline="centered"/>
         ):(<img src={catImageUrl}height="auto"/>
         )}
       
-      <Button variant="contained" color="success" onClick={handleClick}>
-  今日の猫さん
-</Button>
+      <Button variant="contained" color="success" onClick={handleClick}>今日の猫さん</Button>
       
     </div>
   )
-  
 }
 
 
