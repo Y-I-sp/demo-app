@@ -26,7 +26,7 @@ const Home: NextPage<IndexPageProps> = ({initialCatImageUrl}) => {
       <Header/>
       <Link href='/Munchikin'>Munchikin</Link>
       <Link href='/Bengal'>Bengal</Link>
-      <Link href="/Toyger">Toyger</Link>
+      <Link href="/">Home</Link>
         
       {isLoading ? (
         <Loader active size="huge" inline="centered"/>
