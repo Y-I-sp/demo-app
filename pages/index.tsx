@@ -3,10 +3,10 @@ import { useState } from 'react';
 import 'semantic-ui-css/semantic.min.css'
 import {Loader} from 'semantic-ui-react'
 import{ IndexPageProps } from '../components/interface'
-import { fetchCatImage } from '../components/initialCat';
-
+import { fetchCatImage,getServerSideProps } from '../components/initialCat';
+import {WebName} from '../components/Head'
+     <WebName />
 const Home: NextPage<IndexPageProps> = ({initialCatImageUrl}) => {
-
   const [catImageUrl,setCatImageUrl] = useState(initialCatImageUrl);
   const [isLoading,setIsLoading] = useState(false)
 
@@ -38,6 +38,7 @@ const Home: NextPage<IndexPageProps> = ({initialCatImageUrl}) => {
         </button>
     </div>
   )
+  
 }
 
 
