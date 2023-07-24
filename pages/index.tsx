@@ -8,6 +8,7 @@ import { Header } from '../components/header';
 import styles from '../styles/Home.module.css'
 import Button from '@mui/material/Button';
 import Link from 'next/link'
+import Appbar from '../components/Appbar'
 
 export const fetchCatImage = async ():Promise<SerchCatImage>=>{
   const res = await fetch("https://api.thecatapi.com/v1/images/search");
@@ -28,13 +29,13 @@ const Home: NextPage<IndexPageProps> = ({initialCatImageUrl}) => {
   }
 
   return (
-    
     <div className={styles.main}>
-      <Header/>
-      <Link href='/Munchikin'>Munchikin</Link>
-      <Link href='/Bengal'>Bengal</Link>
-      <Link href="/Toyger">Toyger</Link>
-        
+    <Header/>
+    <div className={styles.container}>
+      <div className={styles.code}><Link href='/Munchikin'>Munchikin</Link></div>
+      <div className={styles.code}><Link href='/Bengal'>Bengal</Link></div>
+      <div className={styles.code}><Link href="/Toyger">Toyger</Link></div>
+      </div>
       {isLoading ? (
         <Loader active size="huge" inline="centered"/>
         ):(<img src={catImageUrl}height="auto"/>
@@ -43,6 +44,8 @@ const Home: NextPage<IndexPageProps> = ({initialCatImageUrl}) => {
       <Button variant="contained" color="success" onClick={handleClick}>今日の猫さん</Button>
       
     </div>
+    
+    
   )
 }
 
