@@ -4,7 +4,7 @@ import 'semantic-ui-css/semantic.min.css'
 import {Loader} from 'semantic-ui-react'
 import{ IndexPageProps,SerchCatImage } from '../components/interface'
 import type { GetServerSideProps } from 'next'
-import { Header } from '../components/header';
+import { Header } from '../components/ToygerHeader';
 import styles from '../styles/Home.module.css'
 import Button from '@mui/material/Button';
 import Link from 'next/link'
