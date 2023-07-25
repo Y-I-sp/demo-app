@@ -8,7 +8,7 @@ import { Header } from '../components/header';
 import styles from '../styles/Home.module.css'
 import Button from '@mui/material/Button';
 import Link from 'next/link'
-import Appbar from '../components/Appbar'
+
 
 export const fetchCatImage = async ():Promise<SerchCatImage>=>{
   const res = await fetch("https://api.thecatapi.com/v1/images/search");
