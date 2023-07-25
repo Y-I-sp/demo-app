@@ -31,10 +31,11 @@ const Home: NextPage<IndexPageProps> = ({initialCatImageUrl}) => {
     
     <div className={styles.main}>
       <Header/>
-      <Link href='/Munchikin'>Munchikin</Link>
-      <Link href='/'>Home</Link>
-      <Link href="/Toyger">Toyger</Link>
-        
+      <div className={styles.container}>
+      <div className={styles.code}><Link href='/'>Home</Link></div>
+      <div className={styles.code}><Link href='/Munchikin'>Munchikin</Link></div>
+      <div className={styles.code}><Link href="/Toyger">Toyger</Link></div>
+      </div>
       {isLoading ? (
         <Loader active size="huge" inline="centered"/>
         ):(<img src={catImageUrl}height="auto"/>
