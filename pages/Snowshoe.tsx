@@ -4,13 +4,13 @@ import 'semantic-ui-css/semantic.min.css'
 import {Loader} from 'semantic-ui-react'
 import{ IndexPageProps,SerchCatImage } from '../components/interface'
 import type { GetServerSideProps } from 'next'
-import { Header } from '../components/ToygerHeader';
+import { Header } from '../components/SnowshoeHeader';
 import styles from '../styles/Home.module.css'
 import Button from '@mui/material/Button';
 import Link from 'next/link'
 
 export const fetchCatImage = async ():Promise<SerchCatImage>=>{
-  const res = await fetch("https://api.thecatapi.com/v1/images/search");
+  const res = await fetch("https://api.thecatapi.com/v1/images/search?breed_ids=snow");
   const result = await res.json();
   // console.log(result[0]);
   return result[0];

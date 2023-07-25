@@ -34,7 +34,7 @@ const Home: NextPage<IndexPageProps> = ({initialCatImageUrl}) => {
     <div className={styles.container}>
       <div className={styles.code}><Link href='/Munchikin'>Munchikin</Link></div>
       <div className={styles.code}><Link href='/Bengal'>Bengal</Link></div>
-      <div className={styles.code}><Link href="/Toyger">Toyger</Link></div>
+      <div className={styles.code}><Link href="/Snowshoe">Snowshoe</Link></div>
       </div>
       {isLoading ? (
         <Loader active size="huge" inline="centered"/>

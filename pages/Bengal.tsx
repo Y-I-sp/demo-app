@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import Link from 'next/link'
 
 export const fetchCatImage = async ():Promise<SerchCatImage>=>{
-  const res = await fetch("https://api.thecatapi.com/v1/images/search");
+  const res = await fetch("https://api.thecatapi.com/v1/images/search?breed_ids=beng");
   const result = await res.json();
   // console.log(result[0]);
   return result[0];
@@ -34,7 +34,7 @@ const Home: NextPage<IndexPageProps> = ({initialCatImageUrl}) => {
       <div className={styles.container}>
       <div className={styles.code}><Link href='/'>Home</Link></div>
       <div className={styles.code}><Link href='/Munchikin'>Munchikin</Link></div>
-      <div className={styles.code}><Link href="/Toyger">Toyger</Link></div>
+      <div className={styles.code}><Link href="/Snowshoe">Snowshoe</Link></div>
       </div>
       {isLoading ? (
         <Loader active size="huge" inline="centered"/>
