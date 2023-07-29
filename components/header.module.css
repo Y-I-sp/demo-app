@@ -1,5 +1,8 @@
 .container {
   padding: 0 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .main {
@@ -57,13 +60,15 @@
 }
 
 .code {
-  background: #fafafa;
+  background: #ff9933;
   border-radius: 5px;
   padding: 0.75rem;
-  font-size: 1.1rem;
+  margin: 1px 10px;
+  font-size: 1.5rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
 }
+
 
 .grid {
   display: flex;

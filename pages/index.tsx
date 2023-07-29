@@ -7,8 +7,6 @@ import type { GetServerSideProps } from 'next'
 import { Header } from '../components/header';
 import styles from '../styles/Home.module.css'
 import Button from '@mui/material/Button';
-import Link from 'next/link'
-
 
 export const fetchCatImage = async ():Promise<SerchCatImage>=>{
   const res = await fetch("https://api.thecatapi.com/v1/images/search");
@@ -16,6 +14,8 @@ export const fetchCatImage = async ():Promise<SerchCatImage>=>{
   // console.log(result[0]);
   return result[0];
 }
+<header><Header/></header>
+
 const Home: NextPage<IndexPageProps> = ({initialCatImageUrl}) => {
 
   const [catImageUrl,setCatImageUrl] = useState(initialCatImageUrl);
@@ -30,22 +30,13 @@ const Home: NextPage<IndexPageProps> = ({initialCatImageUrl}) => {
 
   return (
     <div className={styles.main}>
-    <Header/>
-    <div className={styles.container}>
-      <div className={styles.code}><Link href='/Munchikin'>Munchikin</Link></div>
-      <div className={styles.code}><Link href='/Bengal'>Bengal</Link></div>
-      <div className={styles.code}><Link href="/Snowshoe">Snowshoe</Link></div>
-      </div>
       {isLoading ? (
         <Loader active size="huge" inline="centered"/>
-        ):(<img src={catImageUrl}height="auto"/>
+        ):(<img src={catImageUrl}width="1000" height="800"/>
         )}
       
       <Button variant="contained" color="success" onClick={handleClick}>今日の猫さん</Button>
-      
     </div>
-    
-    
   )
 }
 
