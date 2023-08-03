@@ -5,13 +5,29 @@ import { useState } from 'react';
 import{ IndexPageProps,SerchCatImage } from './interface'
 import type { GetServerSideProps } from 'next'
 import Button from '@mui/material/Button';
-
-export  const fetchCatImage = async ():Promise<SerchCatImage>=>{
-  const res = await fetch("https://api.thecatapi.com/v1/images/search");
-  const result = await res.json();
-  return result[0];
+type Props={
+    breed:string
 }
-   const Home: NextPage<any> = ({initialCatImageUrl}) => {
+ const fetchCatImage = async (props:Props):Promise<SerchCatImage>=>{
+    if( props.breed === 'Bengal'){
+        const res = await fetch("https://api.thecatapi.com/v1/images/search?breed_ids=beng");
+        const result = await res.json();
+        return result[0];
+    }
+else if(props.breed === 'Munchikin'){
+        const res = await fetch("https://api.thecatapi.com/v1/images/search?breed_ids=munc");
+        const result = await res.json();
+        return result[0];
+      }
+    else {
+        const res = await fetch("https://api.thecatapi.com/v1/images/search?breed_ids=snow");
+        const result = await res.json();
+        return result[0];
+      }
+}
+
+   const DetailHome: NextPage<any> = ({initialCatImageUrl}) => {
+    
         const [catImageUrl,setCatImageUrl] = useState(initialCatImageUrl);
         const [isLoading,setIsLoading] = useState(false)
       
@@ -41,4 +57,4 @@ return{
       props:{initialCatImageUrl:catImage.url,}
       }
 }
-export default Home
+export default DetailHome
