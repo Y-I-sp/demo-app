@@ -4,7 +4,6 @@ export interface SerchCatImage{
     width:number;
     height:number;
   }
-  
   export interface IndexPageProps{
     initialCatImageUrl:string
     }

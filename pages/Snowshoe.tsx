@@ -4,7 +4,6 @@ import 'semantic-ui-css/semantic.min.css'
 import {Loader} from 'semantic-ui-react'
 import{ IndexPageProps,SerchCatImage } from '../components/interface'
 import type { GetServerSideProps } from 'next'
-import { Header } from '../components/SnowshoeHeader';
 import styles from '../styles/Home.module.css'
 import Button from '@mui/material/Button';
 import Link from 'next/link'
@@ -28,9 +27,8 @@ const Home: NextPage<IndexPageProps> = ({initialCatImageUrl}) => {
   }
 
   return (
-    
     <div className={styles.main}>
-      <Header/>
+      
       <div className={styles.container}>
       <div className={styles.code}><Link href="/">Home</Link></div>
       <div className={styles.code}><Link href='/Munchikin'>Munchikin</Link></div>
