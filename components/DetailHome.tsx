@@ -2,38 +2,42 @@ import {Loader} from 'semantic-ui-react'
 import styles from '../styles/Home.module.css'
 import type { NextPage } from 'next'
 import { useState } from 'react';
-import{ IndexPageProps,SerchCatImage } from './interface'
-import type { GetServerSideProps } from 'next'
+import{ BreedPageProps,SerchCatImage } from './interface'
 import Button from '@mui/material/Button';
 type Props={
     breed:string
 }
- const fetchCatImage = async (props:Props):Promise<SerchCatImage>=>{
+ export const fetchCatImage = async (props:Props):Promise<SerchCatImage>=>{
     if( props.breed === 'Bengal'){
         const res = await fetch("https://api.thecatapi.com/v1/images/search?breed_ids=beng");
         const result = await res.json();
         return result[0];
     }
-else if(props.breed === 'Munchikin'){
+    else if(props.breed === 'Munchikin'){
         const res = await fetch("https://api.thecatapi.com/v1/images/search?breed_ids=munc");
         const result = await res.json();
         return result[0];
       }
-    else {
+    else if(props.breed === 'Snowshoe'){
         const res = await fetch("https://api.thecatapi.com/v1/images/search?breed_ids=snow");
         const result = await res.json();
         return result[0];
       }
+    else{
+        const res = await fetch("https://api.thecatapi.com/v1/images/search");
+        const result = await res.json();
+        return result[0];
+    }
 }
 
-   const DetailHome: NextPage<any> = ({initialCatImageUrl}) => {
+   const DetailHome: NextPage<BreedPageProps> = (props:Props) => {
     
-        const [catImageUrl,setCatImageUrl] = useState(initialCatImageUrl);
+        const [catImageUrl,setCatImageUrl] = useState('');
         const [isLoading,setIsLoading] = useState(false)
       
         const handleClick = async () => {
           setIsLoading(true);
-          const catImage = await fetchCatImage();
+          const catImage = await fetchCatImage(props);
           setCatImageUrl(catImage.url);
           setIsLoading(false)
         }
@@ -50,11 +54,5 @@ else if(props.breed === 'Munchikin'){
      </div>
          )
 }
-   
-export const getServerSideProps: GetServerSideProps<IndexPageProps> = async () =>{
-        const catImage = await fetchCatImage();
-return{
-      props:{initialCatImageUrl:catImage.url,}
-      }
-}
+
 export default DetailHome

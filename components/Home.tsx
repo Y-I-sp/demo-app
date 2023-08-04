@@ -11,7 +11,7 @@ export  const fetchCatImage = async ():Promise<SerchCatImage>=>{
   const result = await res.json();
   return result[0];
 }
-   const Home: NextPage<any> = ({initialCatImageUrl}) => {
+   const Home: NextPage<IndexPageProps> = ({initialCatImageUrl}) => {
         const [catImageUrl,setCatImageUrl] = useState(initialCatImageUrl);
         const [isLoading,setIsLoading] = useState(false)
       
